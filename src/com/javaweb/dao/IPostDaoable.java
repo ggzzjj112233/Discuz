@@ -1,21 +1,28 @@
 package com.javaweb.dao;
 
-import java.util.ArrayList;
-
 import com.javaweb.model.Post;
 
 public interface IPostDaoable {
 	public int addPost(Post post);
 
-	public int updatePost(Post post);
+	public int getAll(int smallid);
 
-	public int deletePost(int pid);
-
-	public Post selectOnePost(String where);
-
-	public ArrayList<Post> selectPosts(String where);
+	public String getPname(int smallid);
 	
-	public int getCount(int smallid);
+	public String getPnamebyptime(int smallid);
 	
-	public Post getLastpost(int smallid);
+	public String getPtimebyptime(int smallid);
+	
+	public String getPusernamebyptime(int smallid);
+
+	public String getLastrtime(int smallid);
+
+	public String getRusername(int smallid);
+
+	public int getTodayCount();
+
+	public int getYesterdayCount();
+
+	public int getcount();
+
 }
