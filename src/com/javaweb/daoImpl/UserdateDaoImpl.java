@@ -77,7 +77,7 @@ public class UserdateDaoImpl implements IUserdateDaoable {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Userdate userdate = new Userdate();
-		String sql = "select * from userdate where 1=1" + where;
+		String sql = "select * from userdate where 1=1 " + where;
 		try {
 			conn = BaseDao.getConnection();
 			statement = conn.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class UserdateDaoImpl implements IUserdateDaoable {
 				userdate.setUser_name(resultSet.getString("user_name"));
 				userdate.setUser_psd(resultSet.getString("user_psd"));
 				userdate.setUser_email(resultSet.getString("user_email"));
-				userdate.setImg(resultSet.getString("img"));				
+				userdate.setImg(resultSet.getString("img"));
 				userlist.add(userdate);
 			}
 			return userlist;
@@ -128,23 +128,46 @@ public class UserdateDaoImpl implements IUserdateDaoable {
 	}
 
 	@Override
-	public Userdate getLastReplyUser(int pid) {
+	public String getUsername() {
+		String username="";
 		Connection conn = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		Userdate userdate=new Userdate();
-		String sql = "SELECT user_name from userdate INNER JOIN reply on userdate.user_id=reply.ruserid WHERE postid='"+pid+"' ORDER BY rtime desc LIMIT 1";
+		String sql = "SELECT user_name from userdate ORDER BY user_id desc LIMIT 1";
 		try {
 			conn = BaseDao.getConnection();
 			statement = conn.prepareStatement(sql);
 			resultSet = statement.executeQuery();
-			if (resultSet.next()) {	
-				userdate.setUser_name(resultSet.getString("user_name"));	
+			if (resultSet.next()) {
+				username=resultSet.getString("user_name");
 			}
-			return userdate;
+			return username;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			BaseDao.close(resultSet, statement, conn);
+		}
+	}
+
+	@Override
+	public int getUserid() {
+		int userid=0;
+		Connection conn = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		String sql = "SELECT user_id from userdate ORDER BY user_id desc LIMIT 1";
+		try {
+			conn = BaseDao.getConnection();
+			statement = conn.prepareStatement(sql);
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				userid=resultSet.getInt("user_id");
+			}
+			return userid;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
 		} finally {
 			BaseDao.close(resultSet, statement, conn);
 		}
