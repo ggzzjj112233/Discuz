@@ -5,34 +5,50 @@ public class Smallblock {
 	private int bigid;
 	private String sb_name;
 	private int count;
-	private int rcount;
-	private Post post;
-	private Reply reply;
-	private Userdate userdate;
+	private String lastpostname;
+	private String ptime;
+	private String pusername;
+	private int postcount;
+	private int allcount;
 
-	
-	public int getRcount() {
-		return rcount;
+	public String getLastpostname() {
+		return lastpostname;
 	}
 
-	public void setRcount(int rcount) {
-		this.rcount = rcount;
+	public void setLastpostname(String lastpostname) {
+		this.lastpostname = lastpostname;
 	}
 
-	public Reply getReply() {
-		return reply;
+	public String getPtime() {
+		return ptime;
 	}
 
-	public void setReply(Reply reply) {
-		this.reply = reply;
+	public void setPtime(String ptime) {
+		this.ptime = ptime;
 	}
 
-	public Userdate getUserdate() {
-		return userdate;
+	public String getPusername() {
+		return pusername;
 	}
 
-	public void setUserdate(Userdate userdate) {
-		this.userdate = userdate;
+	public void setPusername(String pusername) {
+		this.pusername = pusername;
+	}
+
+	public int getPostcount() {
+		return postcount;
+	}
+
+	public void setPostcount(int postcount) {
+		this.postcount = postcount;
+	}
+
+	public int getAllcount() {
+		return allcount;
+	}
+
+	public void setAllcount(int allcount) {
+		this.allcount = allcount;
 	}
 
 	public int getCount() {
@@ -41,14 +57,6 @@ public class Smallblock {
 
 	public void setCount(int count) {
 		this.count = count;
-	}
-
-	public Post getPost() {
-		return post;
-	}
-
-	public void setPost(Post post) {
-		this.post = post;
 	}
 
 	public int getSb_id() {
