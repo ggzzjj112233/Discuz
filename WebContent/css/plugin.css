@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font: 12px "å¾®è½¯é›…é»‘";
+	font: 12px "Î¢ÈíÑÅºÚ";
 	list-style: none;
 }
 
@@ -33,7 +33,7 @@ a:hover {
 }
 
 
-/*é¡¶éƒ¨*/
+/*¶¥²¿*/
 
 .divtop {
 	width: 100%;
@@ -54,7 +54,7 @@ a:hover {
 }
 
 
-/*ä¸»ä½“*/
+/*Ö÷Ìå*/
 
 .divbody {
 	width: 960px;
@@ -307,7 +307,7 @@ nav>div>a>div {
 	float: left;
 }
 
-.divft>div:nth-child(2)>div:first-child {
+.fanhui {
 	width: 65px;
 	height: 28px;
 	border: 1px solid #C2D5E3;
@@ -315,17 +315,7 @@ nav>div>a>div {
 	line-height: 28px;
 }
 
-.divft>div:nth-child(2)>div:nth-child(2) {
-	width: 25px;
-	height: 28px;
-	background: #C2D5E3;
-	border: 1px solid #C2D5E3;
-	text-align: center;
-	line-height: 28px;
-	margin-left: 3px;
-}
-
-.divft>div:nth-child(2)>div:nth-child(3) {
+.epage {
 	width: 25px;
 	height: 28px;
 	border: 1px solid #C2D5E3;
@@ -334,7 +324,7 @@ nav>div>a>div {
 	margin-left: 3px;
 }
 
-.divft>div:nth-child(2)>div:nth-child(4) {
+.nthpage {
 	width: 93px;
 	height: 28px;
 	border: 1px solid #C2D5E3;
@@ -343,7 +333,7 @@ nav>div>a>div {
 	margin-left: 3px;
 }
 
-.divft>div:nth-child(2)>div:nth-child(5) {
+.nxpage {
 	width: 72px;
 	height: 28px;
 	border: 1px solid #C2D5E3;
@@ -376,7 +366,6 @@ nav>div>a>div {
 
 .divtz {
 	width: 958px;
-	height: 476px;
 	border: 1px solid #CDCDCD;
 	margin-top: 4px;
 }
@@ -395,12 +384,10 @@ nav>div>a>div {
 
 .divtz>div:nth-child(2){
 	width: 938px;
-	height: 440px;
 	margin-left: 10px;
 }
 .divtz>div:nth-child(2)>table {
 	width: 938px;
-	height: 440px;
 	border-collapse: collapse;
 }
 
@@ -476,27 +463,17 @@ nav>div>a>div {
 .ksft>div:nth-child(2)>form>div:nth-child(2) {
 	width: 746px;
 	height: 134px;
-	border: 1px solid;
-	border-color: #999 #CCC #CCC #999;
 	margin-top: 10px;
 }
 
 .ksft>div:nth-child(2)>form>div:nth-child(2)>div:first-child {
-	width: 100%;
-	height: 25px;
-	line-height: 25px;
-	border-bottom: 1px solid #CDCDCD;
-	background: #F2F2F2;
-}
-
-.ksft>div:nth-child(2)>form>div:nth-child(2)>div:nth-child(2) {
 	width: 100%;
 	height: 108px;
 	text-align: center;
 	line-height: 108px;
 }
 
-.ksft>div:nth-child(2)>form>div:nth-child(2)>div:nth-child(2)>a {
+.ksft>div:nth-child(2)>form>div:nth-child(2)>div:first-child>a {
 	color: #369;
 }
 

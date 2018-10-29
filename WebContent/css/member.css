@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font: 12px "å¾®è½¯é›…é»‘";
+	font: 12px "Î¢ÈíÑÅºÚ";
 	list-style: none;
 }
 
@@ -535,6 +535,7 @@ nav>div>a>div {
 }
 
 #inforyhm{
+	display:none;
 	color: red;
 }
 
@@ -542,11 +543,38 @@ nav>div>a>div {
 	display: none;
 }
 
+#yhmable{
+	display: none;
+}
+
+#yhmdisable{
+	display: none;
+	color:red;
+}
+
 #informima{
 	display: none;
 }
 
+#informimats{
+	display: none;
+	color:red;
+}
+
+#mimaable{
+	display: none;
+}
+
 #remima{
+	display: none;
+}
+
+#mimabxt{
+	display: none;
+	color:red;
+}
+
+#mimaxt{
 	display: none;
 }
 

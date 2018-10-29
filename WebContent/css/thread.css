@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font: 12px "å¾®è½¯é›…é»‘";
+	font: 12px "Î¢ÈíÑÅºÚ";
 	list-style: none;
 }
 
@@ -698,45 +698,17 @@ nav>div>a>div {
 }
 
 .ft>form>table>tbody>tr>td:nth-child(2)>div:first-child {
-	width: 585px;
-	height: 134px;
-	border: 1px solid;
-	border-color: #999 #CCC #CCC #999;
+	width: 680px;
+	height: 100px;
 	float: left;
-	margin-top: -5px;
+	margin-top: -10px;
 	margin-left: 20px;
-}
-
-.ft>form>table>tbody>tr>td:nth-child(2)>div:first-child>div:first-child {
-	width: 585px;
-	height: 25px;
-	border-bottom: 1px solid #CDCDCD;
-	background: #F2F2F2;
-}
-
-.ft>form>table>tbody>tr>td:nth-child(2)>div:first-child>div:nth-child(2) {
-	width: 585px;
-	height: 108px;
-	text-align: center;
-}
-
-.ft>form>table>tbody>tr>td:nth-child(2)>div:first-child>div:nth-child(2)>div {
-	line-height: 108px;
-	color: #333;
-}
-
-.ft>form>table>tbody>tr>td:nth-child(2)>div:first-child>div:nth-child(2)>div>a {
-	color: #369;
-}
-
-.ft>form>table>tbody>tr>td:nth-child(2)>div:first-child>div:nth-child(2)>div>img {
-	vertical-align: text-bottom;
 }
 
 .ft>form>table>tbody>tr>td:nth-child(2)>div:nth-child(2) {
 	width: 757px;
 	height: 36px;
-	margin-top: 15px;
+	margin-top: 40px;
 	margin-left: 20px;
 	float: left;
 	line-height: 36px;
