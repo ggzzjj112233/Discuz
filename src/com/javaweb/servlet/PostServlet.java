@@ -1,32 +1,27 @@
 package com.javaweb.servlet;
 
 import java.io.IOException;
-import java.util.*;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javaweb.dao.IBigblockDaoable;
-import com.javaweb.daoImpl.BigblockDaoImpl;
-import com.javaweb.model.Bigblock;
-import com.javaweb.model.Smallblock;
-import com.javaweb.service.Smallblockable;
-import com.javaweb.serviceImpl.SmallblockImpl;
+import com.javaweb.dao.IPostDaoable;
+import com.javaweb.daoImpl.PostDaoImpl;
+import com.javaweb.model.Post;
 
 /**
- * Servlet implementation class ForumServlet
+ * Servlet implementation class PostServlet
  */
-@WebServlet("/ForumServlet")
-public class ForumServlet extends HttpServlet {
+@WebServlet("/PostServlet")
+public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ForumServlet() {
+	public PostServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,15 +32,23 @@ public class ForumServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		IBigblockDaoable bbd = new BigblockDaoImpl();
-		Smallblockable sba=new SmallblockImpl();
-		String where1 = "";
-		List<Bigblock> bigblocks = bbd.selectBigblocks(where1);
-		List<Smallblock> smallblocks=sba.getAll();
-		request.setAttribute("bigblocks", bigblocks);
-		request.setAttribute("smallblocks", smallblocks);
-		request.getRequestDispatcher("forum.jsp").forward(request, response);
+		IPostDaoable psd = new PostDaoImpl();
+		Post post = new Post();
+		String pname = request.getParameter("postname");
+		post.setPname(pname);
+		String content = request.getParameter("content");
+		post.setP_content(content);
+		String id = request.getParameter("puid");
+		int puserid = Integer.parseInt(id);
+		post.setPuserid(puserid);
+		String id1 = request.getParameter("sid");
+		int ssid = Integer.parseInt(id1);
+		post.setSmallid(ssid);
+		String id3 = request.getParameter("theme");
+		int cid = Integer.parseInt(id3);
+		post.setCid(cid);
+		psd.addPost(post);
+		response.sendRedirect("PluginServlet?smallid=" + ssid);
 	}
 
 	/**

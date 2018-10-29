@@ -43,6 +43,7 @@ public class RegistServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 对应于post请求
+		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("username");
 		userdate.setUser_name(name);
 		String mima = request.getParameter("mima");
