@@ -2,6 +2,10 @@ window.onload=function(){
 	
 }
 
+var f=false;
+var e=false;
+var d=false;
+
 function showyqm(){
 	var inforyqm=document.getElementById("inforyqm");
 	var infortishi=document.getElementById("infortishi");
@@ -28,11 +32,15 @@ function showtishi(){
 	yqm.style.backgroundColor="#FDF4F4";
 }
 
-function showyhm(){
+function showyhm(){	
 	var inforyhm=document.getElementById("inforyhm");
 	var inforyhmts=document.getElementById("inforyhmts");
 	var	username=document.getElementById("username");
+	var yhmable=document.getElementById("yhmable");
+	var yhmdisable=document.getElementById("yhmdisable");
 	inforyhm.style.display="none";
+	yhmable.style.display="none";
+    yhmdisable.style.display="none";
 	inforyhmts.style.display="block";
 	inforyhmts.style.float="right";
 	inforyhmts.style.marginRight=245+'px';
@@ -42,21 +50,63 @@ function showyhm(){
 }
 
 function yhmtishi(){
+	var regUser = /^[\u4e00-\u9fa5_a-zA-Z0-9_]{3,15}$/;
+	var name = $("#username").val();
 	var inforyhm=document.getElementById("inforyhm");
 	var inforyhmts=document.getElementById("inforyhmts");
+	var yhmable=document.getElementById("yhmable");
+	var yhmdisable=document.getElementById("yhmdisable");
 	var	username=document.getElementById("username");
-	inforyhmts.style.display="none";
-	inforyhm.style.display="block";
-	inforyhm.style.float="right";
-	inforyhm.style.marginRight=252+'px';
-	inforyhm.style.marginTop=13+'px';
-	username.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
-	username.style.backgroundColor="#FDF4F4";
+	$.ajax({
+		   type: "POST",
+		   url: "ChecknameServlet",
+		   data: "name="+ name,
+		   success: function(msg){
+	         if (regUser.test(name)) {
+	        	 if(msg == 0){
+	        		 inforyhmts.style.display="none";
+	        	     inforyhm.style.display="none";
+	        	     yhmdisable.style.display="none";
+	        	     yhmable.style.display="block";
+	        	     yhmable.style.float="right";
+	        	     yhmable.style.marginRight=325+'px';
+	        	     yhmable.style.marginTop=13+'px';
+	        		 username.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
+	        		 username.style.backgroundColor="#FDF4F4";
+	        	 }else{
+	        		 inforyhmts.style.display="none";
+	        	     inforyhm.style.display="none";	        	     
+	        	     yhmable.style.display="none";
+	        	     yhmdisable.style.display="block";
+	        	     yhmdisable.style.float="right";
+	        	     yhmdisable.style.marginRight=310+'px';
+	        	     yhmdisable.style.marginTop=13+'px';
+	        		 username.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
+	        		 username.style.backgroundColor="#FDF4F4";
+	        	 }
+	         } else{
+	        	    inforyhmts.style.display="none";
+	        	    yhmable.style.display="none";
+        	        yhmdisable.style.display="none";
+	        		inforyhm.style.display="block";
+	        		inforyhm.style.float="right";
+	        		inforyhm.style.marginRight=252+'px';
+	        		inforyhm.style.marginTop=13+'px';
+	        		username.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
+	        		username.style.backgroundColor="#FDF4F4";
+	  }
+		   }
+	});	
+	
 }
 
 function showmima(){
 	var informima=document.getElementById("informima");
+	var informimats=document.getElementById("informimats");
+	var mimaable=document.getElementById("mimaable");
 	var	mima=document.getElementById("mima");
+	informimats.style.display="none";
+	mimaable.style.display="none";
 	informima.style.display="block";
 	informima.style.float="right";
 	informima.style.marginRight=210+'px';
@@ -67,20 +117,40 @@ function showmima(){
 }
 
 function mimatishi(){
+	var regMima = /^\w{8,20}$/;
+	var psd=$("#mima").val();
 	var informima=document.getElementById("informima");
+	var informimats=document.getElementById("informimats");
+	var mimaable=document.getElementById("mimaable");
 	var	mima=document.getElementById("mima");
-	informima.style.display="block";
-	informima.style.float="right";
-	informima.style.marginRight=210+'px';
-	informima.style.marginTop=13+'px';
-	informima.style.color="red";
+	if (regMima.test(psd)) {
+	     informima.style.display="none";
+	     informimats.style.display="none";
+	     mimaable.style.display="block";
+	     mimaable.style.float="right";
+	     mimaable.style.marginRight=338+'px';
+	     mimaable.style.marginTop=13+'px';
 	mima.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
 	mima.style.backgroundColor="#FDF4F4";
+	} else {
+		informima.style.display="none";
+		informimats.style.display="block";
+		mimaable.style.display="none";
+		informimats.style.float="right";
+		informimats.style.marginRight=270+'px';
+		informimats.style.marginTop=13+'px';
+		mima.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
+		mima.style.backgroundColor="#FDF4F4";
+	}
 }
 
 function showremima(){
 	var remima=document.getElementById("remima");
+	var mimabxt=document.getElementById("mimabxt");
+	var mimaxt=document.getElementById("mimaxt");
 	var	rmima=document.getElementById("rmima");
+	mimabxt.style.display="none";
+	mimaxt.style.display="none";
 	remima.style.display="block";
 	remima.style.float="right";
 	remima.style.marginRight=302+'px';
@@ -91,15 +161,32 @@ function showremima(){
 }
 
 function remimatishi(){
+	var psd=$("#mima").val();
+	var rpsd=$("#rmima").val();
 	var remima=document.getElementById("remima");
+	var mimabxt=document.getElementById("mimabxt");
+	var mimaxt=document.getElementById("mimaxt");
 	var	rmima=document.getElementById("rmima");
-	remima.style.display="block";
-	remima.style.float="right";
-	remima.style.marginRight=302+'px';
-	remima.style.marginTop=13+'px';
-	remima.style.color="red";
-	rmima.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
-	rmima.style.backgroundColor="#FDF4F4";
+	if(psd==rpsd){
+		mimabxt.style.display="none";
+		mimaxt.style.display="block";
+		remima.style.display="none";
+		mimaxt.style.float="right";
+		mimaxt.style.marginRight=302+'px';
+		mimaxt.style.marginTop=13+'px';
+		rmima.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
+		rmima.style.backgroundColor="#FDF4F4";
+	}else{
+		mimabxt.style.display="block";
+		mimaxt.style.display="none";
+		remima.style.display="none";
+		mimabxt.style.float="right";
+		mimabxt.style.marginRight=290+'px';
+		mimabxt.style.marginTop=13+'px';
+		rmima.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
+		rmima.style.backgroundColor="#FDF4F4";
+	}
+	
 }
 
 function showemail(){
@@ -126,6 +213,48 @@ function emailtishi(){
 	inforemail.style.marginTop=13+'px';
 	email.style.borderColor="#F66 #FFBDB9 #FFBDB9 #F66";
 	email.style.backgroundColor="#FDF4F4";
+}
+
+function getRegist(){
+	var regUser = /^[\u4e00-\u9fa5_a-zA-Z0-9_]{3,15}$/;
+	var name = $("#username").val();
+	$.ajax({
+		   type: "POST",
+		   url: "ChecknameServlet",
+		   data: "name="+ name,
+		   success: function(msg){
+	         if (regUser.test(name)) {
+	        	 if(msg == 0){
+	        		 f=true;
+	        	 }else{
+	        		 f=false;
+	        	 }
+	         } else{
+	        		f=false;
+	  }
+		   }
+	});	
+	var regMima = /^\w{8,20}$/;
+	var psd=$("#mima").val();
+	var rpsd=$("#rmima").val();
+	if (regMima.test(psd)) {
+		d=true;
+	}else{
+		d=false;
+	}
+	if(psd==rpsd){
+		e=true;
+	}else{
+		e=false;
+	}
+	if(f==true && e==true && d==true){
+		alert("注册成功!");
+		return true;
+	}else{
+		alert("注册失败!");
+		return false;
+	}
+	
 }
 
 window.onscroll = function() {

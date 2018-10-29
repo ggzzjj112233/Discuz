@@ -62,3 +62,9 @@ var hideList = function(me) {
 	var doc = document.getElementById("kjmenu");
 	kjmenu.style.display = 'none';
 }
+
+function addreply(){
+	editor.sync();
+	var html= document.getElementById("editor_id").value;
+	$("#schtmlnr").val(html);
+}

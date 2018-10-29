@@ -1,142 +1,103 @@
-var navtop = 120;
-var s1 = 1;
+$(document).ready(function() {
+	$("#li2").mouseover(function() {
+		$('#doc').css('display', 'block');
+	})
 
-function toggleClient() {
-	var collapsed = document.getElementById("collapsed")
-	collapsed.src = s1 % 2 == 0 ? 'img/collapsed_no.gif' : 'img/collapsed_yes.gif';
-	var client = document.getElementById("client");
-	client.style.display = s1 % 2 == 0 ? 'block' : 'none';
-	var client = document.getElementById("divBG");
-	divBG.style.height = s1 % 2 == 0 ? 195 + 'px' : 60 + 'px';
-	s1++;
-}
+	$("#li2").mouseout(function() {
+		$('#doc').css('display', 'none');
+	})
 
-function display1() {
-	document.getElementById("yulan1").style.display = "block";
-}
+	$("#li6").mouseover(function() {
+		$('#doc1').css('display', 'block');
+	})
 
-function disappear1() {
-	document.getElementById("yulan1").style.display = "none";
-}
+	$("#li6").mouseout(function() {
+		$('#doc1').css('display', 'none');
+	})
 
-function display2() {
-	document.getElementById("yulan2").style.display = "block";
-}
+	$("#li7").mouseover(function() {
+		$('#doc2').css('display', 'block');
+	})
 
-function disappear2() {
-	document.getElementById("yulan2").style.display = "none";
-}
+	$("#li7").mouseout(function() {
+		$('#doc2').css('display', 'none');
+	})
 
-function display3() {
-	document.getElementById("yulan3").style.display = "block";
-}
+	$("#kjmenuList").mouseover(function() {
+		$('#kjmenu').css('display', 'block');
+	})
 
-function disappear3() {
-	document.getElementById("yulan3").style.display = "none";
-}
+	$("#kjmenuList").mouseout(function() {
+		$('#kjmenu').css('display', 'none');
+	})
 
-function display4() {
-	document.getElementById("yulan4").style.display = "block";
-}
+	$('#collapsed').click(function() {
+		if($(this).attr("src").indexOf("yes.gif") >= 0) {
+			$(this).attr("src", "img/collapsed_no.gif");
+			$('#client').css('display', 'block');
+			$('#divBG').css('height', 195 + 'px');
+		} else {
+			$(this).attr("src", "img/collapsed_yes.gif");
+			$('#client').css('display', 'none');
+			$('#divBG').css('height', 60 + 'px');
+		}
+	})
 
-function disappear4() {
-	document.getElementById("yulan4").style.display = "none";
-}
+	$('#tztable tr:eq(0) td:eq(1)').mouseover(function() {
+		$('#tztable tr:eq(0) td:eq(2) a').css('display', 'block');
+	})
 
-function display5() {
-	document.getElementById("yulan5").style.display = "block";
-}
+	$('#tztable tr:eq(0) td:eq(1)').mouseout(function() {
+		$('#tztable tr:eq(0) td:eq(2) a').css('display', 'none');
+	})
 
-function disappear5() {
-	document.getElementById("yulan5").style.display = "none";
-}
+	$('#tztable tr:eq(0) td:eq(2)').mouseover(function() {
+		$('#tztable tr:eq(0) td:eq(2) a').css('display', 'block');
+	})
 
-function display6() {
-	document.getElementById("yulan6").style.display = "block";
-}
+	$('#tztable tr:eq(0) td:eq(2)').mouseout(function() {
+		$('#tztable tr:eq(0) td:eq(2) a').css('display', 'none');
+	})
 
-function disappear6() {
-	document.getElementById("yulan6").style.display = "none";
-}
+	$('#tztable tr:eq(1) td:eq(1)').mouseover(function() {
+		$('#tztable tr:eq(1) td:eq(2) a').css('display', 'block');
+	})
 
-function display7() {
-	document.getElementById("yulan7").style.display = "block";
-}
+	$('#tztable tr:eq(1) td:eq(1)').mouseout(function() {
+		$('#tztable tr:eq(1) td:eq(2) a').css('display', 'none');
+	})
 
-function disappear7() {
-	document.getElementById("yulan7").style.display = "none";
-}
+	$('#tztable tr:eq(1) td:eq(2)').mouseover(function() {
+		$('#tztable tr:eq(1) td:eq(2) a').css('display', 'block');
+	})
 
-function display8() {
-	document.getElementById("yulan8").style.display = "block";
-}
+	$('#tztable tr:eq(1) td:eq(2)').mouseout(function() {
+		$('#tztable tr:eq(1) td:eq(2) a').css('display', 'none');
+	})
 
-function disappear8() {
-	document.getElementById("yulan8").style.display = "none";
-}
+	$('#tztable tr:eq(2) td:eq(1)').mouseover(function() {
+		$('#tztable tr:eq(2) td:eq(2) a').css('display', 'block');
+	})
 
-function display9() {
-	document.getElementById("yulan9").style.display = "block";
-}
+	$('#tztable tr:eq(2) td:eq(1)').mouseout(function() {
+		$('#tztable tr:eq(2) td:eq(2) a').css('display', 'none');
+	})
 
-function disappear9() {
-	document.getElementById("yulan9").style.display = "none";
-}
+	$('#tztable tr:eq(2) td:eq(2)').mouseover(function() {
+		$('#tztable tr:eq(2) td:eq(2) a').css('display', 'block');
+	})
 
-function display10() {
-	document.getElementById("yulan10").style.display = "block";
-}
+	$('#tztable tr:eq(2) td:eq(2)').mouseout(function() {
+		$('#tztable tr:eq(2) td:eq(2) a').css('display', 'none');
+	})
+})
 
-function disappear10() {
-	document.getElementById("yulan10").style.display = "none";
-}
-
-var showDoc = function(me) {
-	var doc = document.getElementById("doc");
-	doc.style.display = 'block';
-}
-
-var hideDoc = function(me) {
-	var doc = document.getElementById("doc");
-	doc.style.display = 'none';
-}
-
-var showDoc1 = function(me) {
-	var doc1 = document.getElementById("doc1");
-	doc1.style.display = 'block';
-}
-
-var hideDoc1 = function(me) {
-	var doc1 = document.getElementById("doc1");
-	doc1.style.display = 'none';
-}
-
-var showDoc2 = function(me) {
-	var doc2 = document.getElementById("doc2");
-	doc2.style.display = 'block';
-}
-
-var hideDoc2 = function(me) {
-	var doc2 = document.getElementById("doc2");
-	doc2.style.display = 'none';
-}
-
-window.onscroll = function() {
-	var scrolltop = document.body.scrollTop || document.documentElement.scrollTop;
-	if(scrolltop >= navtop) {
-		document.getElementById("nav1").style.position = 'fixed';
-		document.getElementById("nav1").style.top = 0;		
+$(window).scroll(function() {
+	var scrolltop = $(document.documentElement).scrollTop();
+	if(scrolltop >= 120) {
+		$('#nav1').css('position', 'fixed');
+		$('#nav1').css('top', 0);
 	} else {
-		document.getElementById("nav1").style.position = 'static';
+		$('#nav1').css('position', 'static');
 	}
-}
-
-var showList = function(me) {
-	var doc = document.getElementById("kjmenu");
-	kjmenu.style.display = 'block';
-}
-
-var hideList = function(me) {
-	var doc = document.getElementById("kjmenu");
-	kjmenu.style.display = 'none';
-}
+})
