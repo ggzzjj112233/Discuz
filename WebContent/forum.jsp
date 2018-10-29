@@ -1,7 +1,5 @@
-<%@page import="com.javaweb.model.Bigblock"%>
-<%@page import="com.javaweb.model.Smallblock"%>
-<%@page import="com.javaweb.servlet.ForumServlet"%>
 <%@page import="java.util.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,38 +38,51 @@
 				</a>
 				<p>只需一步，快速开始</p>
 			</div>
-			<div class="divlgn">
-				<table>
-					<tr>
-						<td><select name="" class="username">
-								<option value="">用户名</option>
-								<option value="">Email</option>
-						</select></td>
-						<td><input type="text"
-							style="height: 20px; width: 160px; border: 1px solid; border-color: #848484 #E0E0E0 #E0E0E0 #848484;" />
-						</td>
-						<td><label><input type="checkbox" name="" id=""
-								value="" style="vertical-align: -3px;" />自动登录</label></td>
-					</tr>
-					<tr>
-						<td>密码</td>
-						<td><input type="password"
-							style="height: 20px; width: 160px; border: 1px solid; border-color: #848484 #E0E0E0 #E0E0E0 #848484;" />
-						</td>
-						<td>
-							<button style="width: 60px; height: 22px;">
-								<em>登录</em>
-							</button>
-						</td>
-					</tr>
-				</table>
-			</div>
+			<c:choose>
+				<c:when test="${userdate == null}">
+					<div class="divlgn">
+						<form action="LoginServlet" method="post">
+							<table>
+								<tr>
+									<td><select name="" class="username">
+											<option value="">用户名</option>
+											<option value="">Email</option>
+									</select></td>
+									<td><input type="text" name="user"
+										style="height: 20px; width: 160px; border: 1px solid; border-color: #848484 #E0E0E0 #E0E0E0 #848484;" />
+									</td>
+									<td><label><input type="checkbox" name="" id=""
+											value="" style="vertical-align: -3px;" />自动登录</label></td>
+								</tr>
+								<tr>
+									<td>密码</td>
+									<td><input type="password" name="pwd"
+										style="height: 20px; width: 160px; border: 1px solid; border-color: #848484 #E0E0E0 #E0E0E0 #848484;" />
+									</td>
+									<td>
+										<button type="submit" style="width: 60px; height: 22px;">
+											<em>登录</em>
+										</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="divlgn">
+						<div style="margin: 20px 50px;">
+							欢迎会员：<a href="">${userdate.user_name}</a>
+						</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
 			<div class="divfindpwd">
 				<p>
 					<a href="">找回密码</a>
 				</p>
 				<p>
-					<a href="member.html">立即注册</a>
+					<a href="member.jsp">立即注册</a>
 				</p>
 			</div>
 		</div>
@@ -251,49 +262,51 @@
 			</form>
 		</div>
 		<div class="bankuai" id="bankuai">
-			<%
-				ArrayList<Bigblock> bigblocks = (ArrayList<Bigblock>) request.getAttribute("bigblocks");
-			%>
-			<%
-				ArrayList<Smallblock> smallblocks = (ArrayList<Smallblock>) request.getAttribute("smallblocks");
-			%>
-			<%
-				for (int i = 0; i < bigblocks.size(); i++) {
-			%>
-			<dl>
-				<dt>
-					<a href=""><%=bigblocks.get(i).getBb_name()%></a> <img
-						src="img/collapsed_no.gif" />
-				</dt>
-				<dd>
-					<%
-						for (int j = 0; j < smallblocks.size(); j++) {
-								if (smallblocks.get(j).getBigid() == bigblocks.get(i).getBb_id()) {
-					%>
-					<div>
-						<img src="img/forum.gif" />
-						<div>
-							<p>
-								<a href="" style="color: red; font-weight: 900;"><%=smallblocks.get(j).getSb_name()%></a>
-							</p>
-							<p>
-								主题: <%=smallblocks.get(j).getCount()%>, 帖数: <%=smallblocks.get(j).getRcount()%>
-								</p>
-							<p>
-								<a href="" style="color: #369;"><%=smallblocks.get(j).getPost().getPname()%></a>
-								<%=smallblocks.get(j).getReply().getRtime()%> <%=smallblocks.get(j).getUserdate().getUser_name()%>
-							</p>
-						</div>
-					</div>
-					<%
-						}
-							}
-					%>
-				</dd>
-			</dl>
-			<%
-				}
-			%>
+			<c:forEach items="${bigblocks}" var="bigblock">
+				<dl>
+					<dt>
+						<a href="">${bigblock.bb_name}</a> <img src="img/collapsed_no.gif" />
+					</dt>
+					<dd>
+						<c:forEach items="${smallblocks}" var="smallblock">
+							<c:choose>
+								<c:when test="${smallblock.bigid == bigblock.bb_id }">
+									<div>
+										<img src="img/forum.gif" />
+										<div>
+											<p>
+												<a href="PluginServlet?smallid=${smallblock.sb_id }"
+													style="color: red; font-weight: 900;">${smallblock.sb_name }</a>
+											</p>
+											<c:choose>
+												<c:when
+													test="${smallblock.sb_id==2 || smallblock.sb_id==9 || smallblock.sb_id==10 || smallblock.sb_id==11}">
+													<p>
+														<a href="" style="color: #369; line-height: 18px;">链接到外部地址</a>
+													</p>
+												</c:when>
+												<c:otherwise>
+													<p>
+														主题:
+														${smallblock.postcount}, 帖数:
+														${smallblock.allcount}</p>
+
+													<p>
+														<a href="" style="color: #369;">${smallblock.lastpostname}</a>
+														&nbsp ${smallblock.ptime}
+														${smallblock.pusername}</p>
+
+												</c:otherwise>
+											</c:choose>
+										</div>
+									</div>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+
+					</dd>
+				</dl>
+			</c:forEach>
 		</div>
 		<dl class="production">
 			<dd>
